@@ -22,11 +22,11 @@ Argo CD with Kustomize.
 
 | URL | Service | Login |
 |---|---|---|
-| https://shop.digitalwitch.online | Shop (flags at `/feature`, Locust at `/loadgen/`, AI chat at `/chatbot/`) | public |
-| https://grafana.digitalwitch.online | Grafana | Grafana admin (`grafana-admin` Secret) |
-| https://jaeger.digitalwitch.online | Jaeger | basic auth |
-| https://prometheus.digitalwitch.online | Prometheus | basic auth |
-| https://logs.digitalwitch.online | OpenSearch Dashboards | basic auth |
+| https://shop.pod5ecomm.store | Shop (flags at `/feature`, Locust at `/loadgen/`, AI chat at `/chatbot/`) | public |
+| https://grafana.pod5ecomm.store | Grafana | Grafana admin (`grafana-admin` Secret) |
+| https://jaeger.pod5ecomm.store | Jaeger | basic auth |
+| https://prometheus.pod5ecomm.store | Prometheus | basic auth |
+| https://logs.pod5ecomm.store | OpenSearch Dashboards | basic auth |
 
 ## Prerequisites (EKS Terraform project)
 
@@ -45,8 +45,10 @@ bash create-secrets.sh
 
 # 3. Create the parent app; it creates the 6 layer apps in wave order,
 #    waiting for each to be Healthy before the next
+
 kubectl apply -f argocd/root-app.yaml
-#    (without Argo CD: kubectl apply --server-side -k .)
+
+# (without Argo CD: kubectl apply --server-side -k .)
 
 # 4. DNS: CNAME shop, grafana, jaeger, prometheus, logs -> NGINX load balancer
 #    (terraform output load_balancer_hostname in the EKS project)
